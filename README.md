@@ -2,7 +2,6 @@
 
 This is a Machine Learning-based web application that recommends the most suitable crop to cultivate based on environmental conditions such as nitrogen, phosphorus, potassium levels in the soil, temperature, humidity, pH, and rainfall.
 
-🔗 **GitHub Repository**: [Crop Recommendation System](https://github.com/Ishant-Bansal/Crop-Recomandation_System.git)
 
 ---
 
@@ -101,8 +100,8 @@ Crop-Recomandation_System/
 
 ## 👨‍💻 Author
 
-- **Ishant Bansal**
-- GitHub: [@Ishant-Bansal](https://github.com/Ishant-Bansal)
+- **Sidra Hussain**
+- GitHub: [@sidrah-star](https://github.com/sidrah-star)
 
 ---
 
