@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Contact | Crop Recommendation System</title>
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: #f0f9f0;
+      color: #234d20;
+    }
+    header {
+      background: #a2d5a2;
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+    header h1 {
+      margin: 0;
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 2rem;
+    }
+    nav a {
+      margin-left: 20px;
+      text-decoration: none;
+      color: #234d20;
+      font-weight: 600;
+    }
+    .navbar {
+      display: flex;
+      align-items: center;
+      position: relative;
+    }
+    .nav-links {
+      display: flex;
+      gap: 20px;
+    }
+    .hamburger {
+      display: none;
+      font-size: 2rem;
+      cursor: pointer;
+      margin-left: 20px;
+    }
+    .contact-hero {
+      background: url('https://cdn.pixabay.com/photo/2016/11/29/09/32/agriculture-1867744_1280.jpg') no-repeat center center/cover;
+      color: #155c2a;
+      padding: 90px 20px 60px 20px;
+      text-align: center;
+    }
+    .contact-hero h2 {
+      font-size: 2.7rem;
+      margin: 0;
+      font-family: 'Rajdhani', sans-serif;
+    }
+    .contact-hero p {
+      font-size: 1.2rem;
+      margin-top: 18px;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .contact-section {
+      background: #fff;
+      padding: 50px 30px 30px 30px;
+      max-width: 900px;
+      margin: 40px auto 0 auto;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.06);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 40px;
+      justify-content: space-between;
+    }
+    .contact-info {
+      flex: 1 1 250px;
+      min-width: 220px;
+      margin-bottom: 20px;
+    }
+    .contact-info h3 {
+      color: #234d20;
+      font-size: 1.3rem;
+      margin-bottom: 10px;
+    }
+    .contact-info p {
+      color: #2e3d27;
+      font-size: 1.05rem;
+      margin-bottom: 8px;
+    }
+    .contact-form {
+      flex: 2 1 350px;
+      min-width: 260px;
+      background: #f0fff0;
+      border-radius: 10px;
+      padding: 30px 24px 24px 24px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    }
+    .contact-form h3 {
+      margin-top: 0;
+      color: #234d20;
+      font-size: 1.2rem;
+      margin-bottom: 18px;
+      text-align: center;
+    }
+    .form-group {
+      margin-bottom: 16px;
+      display: flex;
+      flex-direction: column;
+    }
+    .form-group label {
+      margin-bottom: 6px;
+      color: #2e3d27;
+      font-weight: 600;
+    }
+    .form-group input, .form-group textarea {
+      padding: 8px 10px;
+      border: 1px solid #a2d5a2;
+      border-radius: 5px;
+      font-size: 1rem;
+      background: #fff;
+      color: #234d20;
+      resize: none;
+    }
+    .form-group textarea {
+      min-height: 80px;
+      max-height: 200px;
+    }
+    .submit-btn {
+      background: #a2d5a2;
+      color: #234d20;
+      border: none;
+      padding: 12px 30px;
+      border-radius: 5px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s;
+      margin-top: 10px;
+    }
+    .submit-btn:hover {
+      background: #234d20;
+      color: #fff;
+    }
+    .thankyou-message {
+      color: #218838;
+      background: #e6f9e6;
+      border: 1px solid #a2d5a2;
+      border-radius: 8px;
+      padding: 16px;
+      margin-top: 18px;
+      text-align: center;
+      display: none;
+    }
+    footer {
+      background: #234d20;
+      color: white;
+      padding: 30px 20px;
+      text-align: center;
+      margin-top: 60px;
+    }
+    @media (max-width: 900px) {
+      .contact-section {
+        flex-direction: column;
+        gap: 20px;
+        align-items: stretch;
+      }
+    }
+    @media (max-width: 700px) {
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        background: #a2d5a2;
+        position: absolute;
+        top: 60px;
+        right: 0;
+        width: 160px;
+        border-radius: 0 0 10px 10px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+        z-index: 100;
+      }
+      .nav-links.active {
+        display: flex;
+      }
+      .hamburger {
+        display: block;
+      }
+      .contact-section {
+        padding: 20px 8px;
+      }
+      .contact-hero h2 {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>🌿 AgriGrow</h1>
+    <nav class="navbar">
+      <div class="nav-links" id="navLinks">
+        <a href="{{ url_for('home') }}">Home</a>
+        <a href="{{ url_for('project') }}">Recommendation</a>
+        <a href="{{ url_for('about') }}">About</a>
+        <a href="{{ url_for('contact') }}">Contact</a>
+      </div>
+      <div class="hamburger" id="hamburger">&#9776;</div>
+    </nav>
+  </header>
+
+  <div class="contact-hero">
+    <h2>Contact Us</h2>
+    <p>
+      Have questions, feedback, or need support? Reach out to the AgriGrow team using the form below or through our contact information. We're here to help you grow smarter!
+    </p>
+  </div>
+
+  <div class="contact-section">
+    <div class="contact-info">
+      <h3>Contact Information</h3>
+      <p><strong>Email:</strong> support@agrigrow.com</p>
+      <p><strong>Phone:</strong> +91 98765 43210</p>
+      <p><strong>Address:</strong> AgriGrow, Smart Village, India</p>
+      <p>Follow us on <a href="#" style="color:#218838; text-decoration:underline;">Instagram</a> & <a href="#" style="color:#218838; text-decoration:underline;">Twitter</a></p>
+    </div>
+    <form class="contact-form" method="POST" action="#" onsubmit="showThankYou(event)">
+      <h3>Send Us a Message</h3>
+      <div class="form-group">
+        <label for="name">Your Name</label>
+        <input type="text" id="name" name="name" required>
+      </div>
+      <div class="form-group">
+        <label for="email">Your Email</label>
+        <input type="email" id="email" name="email" required>
+      </div>
+      <div class="form-group">
+        <label for="message">Message</label>
+        <textarea id="message" name="message" required></textarea>
+      </div>
+      <button class="submit-btn" type="submit">Send Message</button>
+      <div class="thankyou-message" id="thankyouMessage">
+        Thank you for contacting us! We will get back to you soon.
+      </div>
+    </form>
+  </div>
+
+  <footer>
+    &copy; 2025 CropPredictor | Empowering Farmers with AI 🌍
+  </footer>
+
+  <script>
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('navLinks');
+    hamburger.onclick = function() {
+      navLinks.classList.toggle('active');
+    }
+    function showThankYou(event) {
+      event.preventDefault();
+      document.getElementById('thankyouMessage').style.display = 'block';
+    }
+  </script>
+</body>
+</html> 

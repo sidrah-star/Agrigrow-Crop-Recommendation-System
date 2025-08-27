@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>AgriGrow – Crop Recommendation</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Raleway:wght@300;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0; padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Raleway', sans-serif;
+      background: #f4fff4;
+      color: #2e3d27;
+      line-height: 1.6;
+    }
+    header {
+      background: #a2d5a2;
+      padding: 20px;
+      text-align: center;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    }
+    header h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5rem;
+      color: #234d20;
+    }
+    nav {
+      background: #d4ecd4;
+      padding: 10px 0;
+      text-align: center;
+    }
+    nav a {
+      margin: 0 15px;
+      text-decoration: none;
+      color: #234d20;
+      font-weight: 600;
+    }
+    .section {
+      padding: 50px 20px;
+      text-align: center;
+    }
+    .section h2 {
+      color: #234d20;
+      margin-bottom: 20px;
+      font-size: 2rem;
+    }
+    .section p {
+      max-width: 800px;
+      margin: auto;
+      font-size: 1.1rem;
+    }
+    .image-section {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+      margin-top: 40px;
+    }
+    .image-card {
+      width: 280px;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      background: white;
+    }
+    .image-card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+    .image-card h3 {
+      padding: 10px;
+      font-size: 1.2rem;
+      background: #e9f5e9;
+      color: #2d3b2d;
+    }
+    footer {
+      background: #a2d5a2;
+      padding: 20px;
+      text-align: center;
+      color: #234d20;
+      margin-top: 60px;
+    }
+    .custom-size {
+      width: 220px;
+      height: 150px;
+      object-fit: cover;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>🌿 AgriGrow – Smart Crop Recommendation</h1>
+  </header>
+
+  <nav>
+    <a href="{{ url_for('home') }}">Home</a>
+    <a href="{{ url_for('project') }}">Recommendation</a>
+    <a href="{{ url_for('about') }}">About</a>
+    <a href="{{ url_for('contact') }}">Contact</a>
+  </nav>
+
+  <div class="section">
+    <h2>Why Crop Recommendation Matters?</h2>
+    <p>
+      Agriculture is the backbone of our country. Our intelligent system helps farmers choose the right crop based on soil type, weather, NPK levels, and regional factors – increasing productivity and ensuring sustainability. 🌱
+    </p>
+  </div>
+
+  <div class="section" style="background: #f0fff0;">
+    <h2>🌾 Key Agricultural Insights</h2>
+    <div class="image-section">
+      <div class="image-card">
+        <img class="custom-size" src="{{ url_for('static', filename='images/Soil Health Testing.png') }}" alt="Soil Testing" />
+        <h3>Soil Health Testing</h3>
+      </div>
+      <div class="image-card">
+        <img src="{{ url_for('static', filename='images/N-P-K-Fertilizer-Benefit-Plants.png') }}" alt="NPK Balance" />
+        <h3>NPK Nutrient Analysis</h3>
+      </div>
+      <div class="image-card">
+        <img src="{{ url_for('static', filename='images/as-climate-change-prog.jpg') }}" alt="Climate Conditions" />
+        <h3>Climate & Rainfall Patterns</h3>
+      </div>
+      <div class="image-card">
+        <img src="{{ url_for('static', filename='images/applsci-12-03396-g001.png') }}" alt="Smart Farming" />
+        <h3>IoT in Farming</h3>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>📈 Our Goal</h2>
+    <p>
+      Empower every farmer with data-driven decisions. From traditional farming to smart agriculture – let’s revolutionize India’s agrarian future together! 🌾🚜
+    </p>
+  </div>
+
+  <footer>
+    Made with ❤️ for farmers • AgriGrow © 2025
+  </footer>
+
+</body>
+</html>

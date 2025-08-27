@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Crop Recommendation Result</title>
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: #f0f9f0;
+      color: #234d20;
+    }
+    header {
+      background: #a2d5a2;
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+    header h1 {
+      margin: 0;
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 2rem;
+    }
+    nav a {
+      margin-left: 20px;
+      text-decoration: none;
+      color: #234d20;
+      font-weight: 600;
+    }
+    .navbar {
+      display: flex;
+      align-items: center;
+      position: relative;
+    }
+    .nav-links {
+      display: flex;
+      gap: 20px;
+    }
+    .hamburger {
+      display: none;
+      font-size: 2rem;
+      cursor: pointer;
+      margin-left: 20px;
+    }
+    .result-hero {
+      background: url('https://cdn.pixabay.com/photo/2017/09/30/18/52/wheat-2801591_1280.jpg') no-repeat center center/cover;
+      color: #155c2a;
+      padding: 90px 20px 60px 20px;
+      text-align: center;
+    }
+    .result-hero h2 {
+      font-size: 2.7rem;
+      margin: 0;
+      font-family: 'Rajdhani', sans-serif;
+    }
+    .result-section {
+      background: #fff;
+      padding: 50px 30px 30px 30px;
+      max-width: 600px;
+      margin: 40px auto 0 auto;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.06);
+      text-align: center;
+    }
+    .result-section h3 {
+      color: #234d20;
+      font-size: 1.5rem;
+      margin-bottom: 18px;
+    }
+    .result-card {
+      display: flex;
+      align-items: center;
+      background: #f0fff0;
+      border: 1px solid #a2d5a2;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+      max-width: 600px;
+      margin: 40px auto;
+      padding: 30px;
+    }
+    .result-image img {
+      width: 150px;
+      height: 150px;
+      object-fit: contain;
+      border-radius: 10px;
+      margin-right: 30px;
+    }
+    .result-details h3 {
+      margin: 0 0 10px 0;
+      color: #234d20;
+      font-size: 1.5rem;
+    }
+    .result-details p {
+      margin: 6px 0;
+      color: #2e3d27;
+      font-size: 1.1rem;
+    }
+    .back-btn {
+      background: #a2d5a2;
+      color: #234d20;
+      border: none;
+      padding: 12px 30px;
+      border-radius: 5px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s;
+      text-decoration: none;
+      margin-top: 18px;
+      display: inline-block;
+    }
+    .back-btn:hover {
+      background: #234d20;
+      color: #fff;
+    }
+    footer {
+      background: #234d20;
+      color: white;
+      padding: 30px 20px;
+      text-align: center;
+      margin-top: 60px;
+    }
+    @media (max-width: 700px) {
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        background: #a2d5a2;
+        position: absolute;
+        top: 60px;
+        right: 0;
+        width: 160px;
+        border-radius: 0 0 10px 10px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+        z-index: 100;
+      }
+      .nav-links.active {
+        display: flex;
+      }
+      .hamburger {
+        display: block;
+      }
+      .result-section {
+        padding: 20px 8px;
+      }
+      .result-hero h2 {
+        font-size: 2rem;
+      }
+    }
+    @media (max-width: 600px) {
+      .result-card {
+        flex-direction: column;
+        text-align: center;
+        padding: 20px;
+      }
+      .result-image img {
+        margin: 0 0 20px 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>🌿 AgriGrow</h1>
+    <nav class="navbar">
+      <div class="nav-links" id="navLinks">
+        <a href="{{ url_for('home') }}">Home</a>
+        <a href="{{ url_for('project') }}">Recommendation</a>
+        <a href="{{ url_for('about') }}">About</a>
+        <a href="{{ url_for('contact') }}">Contact</a>
+      </div>
+      <div class="hamburger" id="hamburger">&#9776;</div>
+    </nav>
+  </header>
+
+  <div class="result-hero">
+    <h2>Crop Recommendation Result</h2>
+  </div>
+
+  <div class="result-section">
+    <h3>Your Best Crop to Grow:</h3>
+    <div class="result-card">
+      <div class="result-image">
+        <img src="{{ crop_image }}" alt="{{ crop_name }}">
+      </div>
+      <div class="result-details">
+        <h3>Recommended Crop: <span>{{ crop_name }}</span></h3>
+        <p>Soil Type: {{ details.soil_type }}</p>
+        <p>pH: {{ details.ph }}</p>
+        <p>Temperature: {{ details.temperature }}</p>
+        <!-- aur bhi details -->
+      </div>
+    </div>
+    <a href="{{ url_for('project') }}" class="back-btn">&#8592; Try Another Recommendation</a>
+  </div>
+
+  <footer>
+    &copy; 2025 CropPredictor | Empowering Farmers with AI 🌍
+  </footer>
+
+  <script>
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('navLinks');
+    hamburger.onclick = function() {
+      navLinks.classList.toggle('active');
+    }
+  </script>
+</body>
+</html> 

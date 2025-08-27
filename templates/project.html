@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Crop Recommendation System</title>
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: #f0f9f0;
+      color: #234d20;
+    }
+
+    header {
+      background: #a2d5a2;
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+
+    header h1 {
+      margin: 0;
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 2rem;
+    }
+
+    nav a {
+      margin-left: 20px;
+      text-decoration: none;
+      color: #234d20;
+      font-weight: 600;
+    }
+
+    .navbar {
+      display: flex;
+      align-items: center;
+      position: relative;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 20px;
+    }
+
+    .hamburger {
+      display: none;
+      font-size: 2rem;
+      cursor: pointer;
+      margin-left: 20px;
+    }
+
+    .hero {
+      background: url('https://cdn.pixabay.com/photo/2017/09/30/18/52/wheat-2801591_1280.jpg') no-repeat center center/cover;
+      color: rgb(21, 106, 40);
+      padding: 100px 20px;
+      text-align: center;
+    }
+
+    .hero h2 {
+      font-size: 3rem;
+      margin: 0;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      margin-top: 10px;
+    }
+
+    .section {
+      padding: 60px 40px;
+      background: #ffffff;
+    }
+
+    .section h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #234d20;
+      font-size: 2rem;
+    }
+
+    .section p {
+      max-width: 800px;
+      margin: auto;
+      text-align: center;
+      font-size: 1.1rem;
+      line-height: 1.6;
+    }
+
+    .info-cards {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 30px;
+      margin-top: 40px;
+    }
+
+    .card {
+      background: #f0fff0;
+      border: 1px solid #a2d5a2;
+      border-radius: 12px;
+      padding: 20px;
+      max-width: 300px;
+      text-align: center;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+    }
+
+    .card img {
+      width: 100px;
+      height: 100px;
+      object-fit: contain;
+    }
+
+    .form-card {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px 30px;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      padding: 40px;
+      margin-top: 30px;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .form-card h2 {
+      grid-column: 1 / -1;
+      text-align: center;
+      color: #234d20;
+      margin-bottom: 10px;
+      font-size: 2rem;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      text-align: left;
+    }
+
+    .form-group label {
+      margin-bottom: 6px;
+      color: #2e3d27;
+      font-weight: 600;
+    }
+
+    .form-group input {
+      padding: 8px 10px;
+      border: 1px solid #a2d5a2;
+      border-radius: 5px;
+      font-size: 1rem;
+      background: #f0fff0;
+      color: #234d20;
+    }
+
+    .submit-btn {
+      grid-column: 1 / -1;
+      margin-top: 20px;
+      background: #a2d5a2;
+      color: #234d20;
+      border: none;
+      padding: 12px 30px;
+      border-radius: 5px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s;
+      justify-self: center;
+    }
+
+    .submit-btn:hover {
+      background: #234d20;
+      color: #fff;
+    }
+
+    footer {
+      background: #234d20;
+      color: white;
+      padding: 30px 20px;
+      text-align: center;
+      margin-top: 60px;
+    }
+
+    @media(max-width: 768px) {
+      .form-card {
+        grid-template-columns: 1fr;
+      }
+
+      .info-cards {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+
+    @media (max-width: 700px) {
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        background: #a2d5a2;
+        position: absolute;
+        top: 60px;
+        right: 0;
+        width: 160px;
+        border-radius: 0 0 10px 10px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+        z-index: 100;
+      }
+      .nav-links.active {
+        display: flex;
+      }
+      .hamburger {
+        display: block;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>🌿 AgriGrow</h1>
+    <nav class="navbar">
+      <div class="nav-links" id="navLinks">
+        <a href="{{ url_for('home') }}">Home</a>
+        <a href="{{ url_for('about') }}">About</a>
+        <a href="{{ url_for('contact') }}">Contact</a>
+      </div>
+      <div class="hamburger" id="hamburger">&#9776;</div>
+    </nav>
+  </header>
+
+  <div class="hero">
+    <h2>Smart Farming Starts Here</h2>
+    <p>Get the best crop suggestions based on your soil and weather conditions</p>
+  </div>
+
+  <div class="section">
+    <h2>Why Crop Recommendation?</h2>
+    <p>In the modern era of agriculture, maximizing yield and sustainability is vital. Our crop recommendation system helps farmers choose the right crop based on soil type, pH, nutrients, and local weather conditions. It’s smart, accurate, and designed for real-world farming needs.</p>
+  </div>
+
+  <div class="info-cards">
+    <div class="card">
+      <img src="https://cdn-icons-png.flaticon.com/512/2909/2909830.png" alt="Soil Analysis">
+      <h3>Soil Analysis</h3>
+      <p>Analyze soil nutrients like NPK, pH, and moisture for optimal yield.</p>
+    </div>
+    <div class="card">
+      <img src="https://cdn-icons-png.flaticon.com/512/2076/2076000.png" alt="Weather">
+      <h3>Weather-Aware</h3>
+      <p>Integrates weather data for better seasonal crop suggestions.</p>
+    </div>
+    <div class="card">
+      <img src="https://cdn-icons-png.flaticon.com/512/4259/4259720.png" alt="Recommendations">
+      <h3>Smart Output</h3>
+      <p>Machine learning powered recommendations to guide farmers wisely.</p>
+    </div>
+  </div>
+
+  <form class="form-card" action="{{ url_for('project') }}" method="POST">
+    <h2>Enter Soil Details</h2>
+    <div class="form-group">
+      <label for="nitrogen">Nitrogen (N)</label>
+      <input type="number" name="nitrogen" id="nitrogen" required>
+    </div>
+    <div class="form-group">
+      <label for="phosphorus">Phosphorus (P)</label>
+      <input type="number" name="phosphorus" id="phosphorus" required>
+    </div>
+    <div class="form-group">
+      <label for="potassium">Potassium (K)</label>
+      <input type="number" name="potassium" id="potassium" required>
+    </div>
+    <div class="form-group">
+      <label for="temperature">Temperature (°C)</label>
+      <input type="number" name="temperature" id="temperature" step="0.1" required>
+    </div>
+    <div class="form-group">
+      <label for="humidity">Humidity (%)</label>
+      <input type="number" name="humidity" id="humidity" step="0.1" required>
+    </div>
+    <div class="form-group">
+      <label for="ph">pH Level</label>
+      <input type="number" name="ph" id="ph" step="0.1" required>
+    </div>
+    <div class="form-group">
+      <label for="rainfall">Rainfall (mm)</label>
+      <input type="number" name="rainfall" id="rainfall" step="0.1" required>
+    </div>
+
+    <button class="submit-btn" type="submit">Recommend Crop 🌾</button>
+  </form>
+
+  <footer>
+    &copy; 2025 CropPredictor | Empowering Farmers with AI 🌍
+  </footer>
+
+  <script>
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('navLinks');
+    hamburger.onclick = function() {
+      navLinks.classList.toggle('active');
+    }
+  </script>
+
+</body>
+</html>

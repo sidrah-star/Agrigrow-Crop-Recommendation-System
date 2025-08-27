@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>About | Crop Recommendation System</title>
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: #f0f9f0;
+      color: #234d20;
+    }
+    header {
+      background: #a2d5a2;
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+    header h1 {
+      margin: 0;
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 2rem;
+    }
+    nav a {
+      margin-left: 20px;
+      text-decoration: none;
+      color: #234d20;
+      font-weight: 600;
+    }
+    .navbar {
+      display: flex;
+      align-items: center;
+      position: relative;
+    }
+    .nav-links {
+      display: flex;
+      gap: 20px;
+    }
+    .hamburger {
+      display: none;
+      font-size: 2rem;
+      cursor: pointer;
+      margin-left: 20px;
+    }
+    .about-hero {
+      background: url('https://cdn.pixabay.com/photo/2016/11/29/09/32/agriculture-1867744_1280.jpg') no-repeat center center/cover;
+      color: #155c2a;
+      padding: 90px 20px 60px 20px;
+      text-align: center;
+    }
+    .about-hero h2 {
+      font-size: 2.7rem;
+      margin: 0;
+      font-family: 'Rajdhani', sans-serif;
+    }
+    .about-hero p {
+      font-size: 1.2rem;
+      margin-top: 18px;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .about-section {
+      background: #fff;
+      padding: 50px 30px 30px 30px;
+      max-width: 900px;
+      margin: 40px auto 0 auto;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.06);
+    }
+    .about-section h3 {
+      color: #234d20;
+      font-size: 1.5rem;
+      margin-bottom: 12px;
+    }
+    .about-section p {
+      font-size: 1.08rem;
+      line-height: 1.7;
+      color: #2e3d27;
+      margin-bottom: 18px;
+    }
+    .team-section {
+      background: #f0fff0;
+      padding: 30px 20px;
+      max-width: 900px;
+      margin: 30px auto 40px auto;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.04);
+      text-align: center;
+    }
+    .team-section h3 {
+      color: #234d20;
+      font-size: 1.3rem;
+      margin-bottom: 10px;
+    }
+    .team-section p {
+      color: #2e3d27;
+      font-size: 1.05rem;
+      margin-bottom: 0;
+    }
+    footer {
+      background: #234d20;
+      color: white;
+      padding: 30px 20px;
+      text-align: center;
+      margin-top: 60px;
+    }
+    @media (max-width: 700px) {
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        background: #a2d5a2;
+        position: absolute;
+        top: 60px;
+        right: 0;
+        width: 160px;
+        border-radius: 0 0 10px 10px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+        z-index: 100;
+      }
+      .nav-links.active {
+        display: flex;
+      }
+      .hamburger {
+        display: block;
+      }
+      .about-section, .team-section {
+        padding: 20px 8px;
+      }
+      .about-hero h2 {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>🌿 AgriGrow</h1>
+    <nav class="navbar">
+      <div class="nav-links" id="navLinks">
+        <a href="{{ url_for('home') }}">Home</a>
+        <a href="{{ url_for('project') }}">Recommendation</a>
+        <a href="{{ url_for('about') }}">About</a>
+        <a href="{{ url_for('contact') }}">Contact</a>
+      </div>
+      <div class="hamburger" id="hamburger">&#9776;</div>
+    </nav>
+  </header>
+
+  <div class="about-hero">
+    <h2>About AgriGrow – Crop Recommendation System</h2>
+    <p>
+      AgriGrow is an intelligent crop recommendation platform designed to empower farmers with data-driven decisions. By analyzing soil nutrients, weather conditions, and other environmental factors, AgriGrow suggests the most suitable crops for your land, helping you maximize yield and sustainability.
+    </p>
+  </div>
+
+  <div class="about-section">
+    <h3>Our Mission</h3>
+    <p>
+      The mission of AgriGrow is to revolutionize traditional farming by integrating modern technology and artificial intelligence. We aim to make advanced agricultural insights accessible to every farmer, regardless of their background or resources.
+    </p>
+    <h3>How It Works</h3>
+    <p>
+      Our system collects essential soil and weather parameters such as Nitrogen (N), Phosphorus (P), Potassium (K), temperature, humidity, pH, and rainfall. Using a machine learning model trained on real agricultural data, AgriGrow predicts the best crop for your field. This helps farmers make informed decisions, reduce risk, and increase productivity.
+    </p>
+    <h3>Key Features</h3>
+    <ul style="color:#2e3d27; font-size:1.05rem; margin-left:18px;">
+      <li>Easy-to-use web interface for inputting soil and weather data</li>
+      <li>Accurate crop recommendations powered by machine learning</li>
+      <li>Responsive design for mobile and desktop</li>
+      <li>Focus on sustainability and maximizing yield</li>
+      <li>Completely free and open for all farmers</li>
+    </ul>
+  </div>
+
+  <div class="team-section">
+    <h3>Meet the Team</h3>
+    <p>
+      AgriGrow is developed by a passionate team of students and agricultural technology enthusiasts, dedicated to making a positive impact in the farming community. We believe in the power of technology to transform agriculture and improve lives.
+    </p>
+  </div>
+
+  <footer>
+    &copy; 2025 CropPredictor | Empowering Farmers with AI 🌍
+  </footer>
+
+  <script>
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('navLinks');
+    hamburger.onclick = function() {
+      navLinks.classList.toggle('active');
+    }
+  </script>
+</body>
+</html> 
